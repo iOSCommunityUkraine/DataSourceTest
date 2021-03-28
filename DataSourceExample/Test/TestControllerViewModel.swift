@@ -59,7 +59,7 @@ struct TestControllerViewModel {
         
         dataSource.add(
             section: FriendsSection(
-                list: friends.compactMap(ProfileInfoViewModel.init(user:))
+                list: friends.compactMap { ProfileInfoViewModel(user: $0) }
             )
         )
     }

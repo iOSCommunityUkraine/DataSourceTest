@@ -99,7 +99,10 @@ class TableContentProvider<
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        let item = dataSource.item(at: indexPath)
+        let decorator = decorators.itemDecorator(for: item)
+        
+        return decorator.height(with: item, in: tableView)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

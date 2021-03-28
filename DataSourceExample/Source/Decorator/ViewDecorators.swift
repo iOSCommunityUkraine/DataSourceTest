@@ -43,15 +43,23 @@ final class ViewDecorators {
     }
     
     func itemDecorator(for item: DataSourceItem) -> ViewDecoratorContext {
-        itemDecorators[type(of: item).name]!
+        context(for: item, in: itemDecorators)
     }
     
     func headerDecorator(for item: DataSourceItem) -> ViewDecoratorContext {
-        headerDecorators[type(of: item).name]!
+        context(for: item, in: headerDecorators)
     }
     
     func footerDecorator(for item: DataSourceItem) -> ViewDecoratorContext {
-        footerDecorators[type(of: item).name]!
+        context(for: item, in: footerDecorators)
+    }
+    
+    private func context(for item: DataSourceItem, in list: Content) -> ViewDecoratorContext {
+        guard let decorator = list[type(of: item).name] else {
+            preconditionFailure("Must register a decorator for \(type(of: item)) type")
+        }
+        
+        return decorator
     }
     
     private static func content(

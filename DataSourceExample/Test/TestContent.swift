@@ -5,7 +5,7 @@
 //  Created by Andrew Kochulab on 24.03.2021.
 //
 
-import Foundation
+import UIKit
 
 struct User {
     let firstName: String
@@ -14,10 +14,12 @@ struct User {
 
 struct UserViewModel: DataSourceItem {
     let user: User
+    var height: CGFloat? = nil
 }
 
 struct ProfileInfoViewModel: DataSourceItem {
     let user: User
+    var height: CGFloat? = nil
     
     func firstName() -> String {
         user.firstName
@@ -35,6 +37,8 @@ final class ProfileAboutViewModel: DataSourceItem {
         }
     }
     
+    var height: CGFloat? = nil
+    
     var didChange: ((String) -> Void)?
     
     init(message: String) {
@@ -45,6 +49,8 @@ final class ProfileAboutViewModel: DataSourceItem {
 struct ProfileActionViewModel: SelectableDataSourceItem {
     let name: String
     var onSelect: EmptyClosure
+    
+    var height: CGFloat? = nil
 }
 
 struct ProfileSection: AnyDataSourceSection {

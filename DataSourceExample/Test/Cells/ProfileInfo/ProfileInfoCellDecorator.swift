@@ -5,7 +5,7 @@
 //  Created by Andrew Kochulab on 24.03.2021.
 //
 
-import Foundation
+import UIKit
 
 struct ProfileInfoCellDecorator: ViewDecorator {
     func decorate(view: ProfileInfoCell, with item: ProfileInfoViewModel) {

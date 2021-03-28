@@ -5,7 +5,7 @@
 //  Created by Andrew Kochulab on 24.03.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol ViewDecoratorContext {
     static var reuseIdentifier: String { get }
@@ -17,6 +17,11 @@ protocol ViewDecoratorContext {
         for view: ReusableView,
         with item: DataSourceItem
     )
+    
+    func height(
+        with item: DataSourceItem,
+        in tableView: UITableView
+    ) -> CGFloat
 }
 
 extension ViewDecoratorContext where Self: ViewDecorator {
@@ -32,19 +37,27 @@ extension ViewDecoratorContext where Self: ViewDecorator {
         for view: ReusableView,
         with item: DataSourceItem
     ) {
-        // FIXME: Check posibilities to fix (item as? Item) call
+        decorate(view: view as! View, with: item as! Item)
+    }
+    
+    func height(
+        with item: DataSourceItem,
+        in tableView: UITableView
+    ) -> CGFloat {
+        var item = item as! Item
         
-        (view as? View).flatMap { view in
-            (item as? Item).flatMap { item in
-                decorate(view: view, with: item)
-            }
-        }
+        return height(for: &item, in: tableView)
     }
 }
 
 protocol ViewDecorator: ViewDecoratorContext {
     associatedtype View: ReusableView
     associatedtype Item: DataSourceItem
+    
+    func height(
+        for item: inout Item,
+        in tableView: UITableView
+    ) -> CGFloat
     
     func decorate(
         view: View,
@@ -55,5 +68,19 @@ protocol ViewDecorator: ViewDecoratorContext {
 extension ViewDecorator {
     static var reuseIdentifier: String {
         View.reuseIdentifier
+    }
+    
+    func height(
+        for item: inout Item,
+        in tableView: UITableView
+    ) -> CGFloat {
+        if let height = item.height {
+            return height
+        }
+
+        let height = UITableView.automaticDimension
+        item.height = height
+
+        return height
     }
 }

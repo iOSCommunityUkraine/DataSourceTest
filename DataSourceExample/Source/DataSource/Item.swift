@@ -5,13 +5,14 @@
 //  Created by Andrew Kochulab on 24.03.2021.
 //
 
-import Foundation
+import UIKit
 
 typealias EmptyClosure = () -> Void
 
 protocol DataSourceItem {
     static var name: String { get }
     
+    var height: CGFloat? { get set }
     var selectionEnabled: Bool { get }
 }
 
