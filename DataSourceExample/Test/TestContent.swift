@@ -12,11 +12,11 @@ struct User {
     let lastName: String?
 }
 
-struct UserViewModel: ViewModel {
+struct UserViewModel: DataSourceItem {
     let user: User
 }
 
-struct ProfileInfoViewModel: ViewModel {
+struct ProfileInfoViewModel: DataSourceItem {
     let user: User
     
     func firstName() -> String {
@@ -28,7 +28,7 @@ struct ProfileInfoViewModel: ViewModel {
     }
 }
 
-final class ProfileAboutViewModel: ViewModel {
+final class ProfileAboutViewModel: DataSourceItem {
     var message: String {
         didSet {
             didChange?(message)
@@ -42,15 +42,15 @@ final class ProfileAboutViewModel: ViewModel {
     }
 }
 
-struct ProfileActionViewModel: SelectableViewModel {
+struct ProfileActionViewModel: SelectableDataSourceItem {
     let name: String
     var onSelect: EmptyClosure
 }
 
-struct ProfileSection: DataSourceSection {
-    let items: [ViewModel]
+struct ProfileSection: AnyDataSourceSection {
+    let items: [DataSourceItem]
 }
 
 struct FriendsSection: DataSourceSection {
-    var items: [ViewModel]
+    var list: [ProfileInfoViewModel]
 }

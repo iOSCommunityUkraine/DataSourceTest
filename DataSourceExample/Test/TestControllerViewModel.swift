@@ -8,7 +8,7 @@
 import Foundation
 
 struct TestControllerViewModel {
-    let dataSource = DataSource()
+    let dataSource = AnyDataSource()
     
     init() {
         configure()
@@ -17,24 +17,24 @@ struct TestControllerViewModel {
     func configure() {
         let test1 = ProfileAboutViewModel(message: "About test1 message")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            test1.message = "About test1 - 2 message"
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                test1.message = "About test1 - 3 message"
-            }
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            test1.message = "About test1 - 2 message"
+//            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                test1.message = "About test1 - 3 message"
+//            }
+//        }
         
         
         let test2 = ProfileAboutViewModel(message: "About test2 - 1 message")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            test2.message = "About test2 - 2 message"
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                test2.message = "About test2 - 3 message"
-            }
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            test2.message = "About test2 - 2 message"
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                test2.message = "About test2 - 3 message"
+//            }
+//        }
         
         dataSource.add(
             section: ProfileSection(
@@ -59,7 +59,7 @@ struct TestControllerViewModel {
         
         dataSource.add(
             section: FriendsSection(
-                items: friends.compactMap(ProfileInfoViewModel.init(user:))
+                list: friends.compactMap(ProfileInfoViewModel.init(user:))
             )
         )
     }

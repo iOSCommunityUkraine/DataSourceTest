@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ProfileAboutCellDecorator: CellDecorator {
-    func decorate(cell: ProfileAboutCell, with item: ProfileAboutViewModel) {
-        cell.valueLabel.text = item.message
+struct ProfileAboutCellDecorator: ViewDecorator {
+    func decorate(view: ProfileAboutCell, with item: ProfileAboutViewModel) {
+        view.valueLabel.text = item.message
         
-        item.didChange = { [weak cell] message in
-            cell?.valueLabel.text = message
+        item.didChange = { [weak view] message in
+            view?.valueLabel.text = message
         }
     }
 }
