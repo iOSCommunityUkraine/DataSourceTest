@@ -7,32 +7,16 @@
 
 import UIKit
 
-extension UITableView {
-    final func register<T: UITableViewCell>(
-        _ cellType: T.Type,
-        tag: String? = nil
-    ) {
-        let reuseIdentifier = tag != nil
-            ? "\(cellType.reuseIdentifier)_\(tag!)"
-            : cellType.reuseIdentifier
-        
-        register(
-            cellType.self,
-            forCellReuseIdentifier: reuseIdentifier
-        )
-    }
-}
-
 final class TableContentProvider<
     TableView: UITableView
 >: NSObject, UITableViewDataSource, UITableViewDelegate {
     let dataSource: DataSource
-    let decorators: CellDecorators
+    let decorators: ViewDecorators
     weak var tableView: UITableView?
     
     init(
         dataSource: DataSource,
-        decorators: CellDecorators,
+        decorators: ViewDecorators,
         tableView: UITableView
     ) {
         self.dataSource = dataSource
@@ -45,8 +29,10 @@ final class TableContentProvider<
     }
     
     private func configure() {
-        for decorator in decorators.all() {
-            tableView?.register(decorator.cell as! UITableViewCell.Type)
+        tableView.flatMap {
+            decorators.items.forEach($0.registerItem(with:))
+            decorators.headers.forEach($0.registerHeader(with:))
+            decorators.footers.forEach($0.registerFooter(with:))
         }
         
         tableView?.dataSource = self
@@ -70,17 +56,13 @@ final class TableContentProvider<
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = dataSource.item(at: indexPath)
-        let decorator = decorators.decorator(for: item)
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: decorator.cell.reuseIdentifier,
-            for: indexPath
+        let decorator = decorators.itemDecorator(for: item)
+        
+        return tableView.dequeue(
+            item: item,
+            with: decorator,
+            at: indexPath
         )
-        
-        cell.selectionStyle = item.selectionEnabled ? .default : .none
-        
-        decorator.execute(for: cell, with: item)
-        
-        return cell
     }
     
     

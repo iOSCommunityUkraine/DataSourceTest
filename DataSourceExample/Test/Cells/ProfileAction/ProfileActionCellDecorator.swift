@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ProfileActionCellDecorator: CellDecorator {
-    func decorate(cell: ProfileActionCell, with item: ProfileActionViewModel) {
-        cell.valueLabel.text = item.name
+struct ProfileActionCellDecorator: ViewDecorator {
+    func decorate(view: ProfileActionCell, with item: ProfileActionViewModel) {
+        view.valueLabel.text = item.name
     }
 }

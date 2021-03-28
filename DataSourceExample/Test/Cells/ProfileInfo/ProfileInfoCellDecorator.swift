@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ProfileInfoCellDecorator: CellDecorator {
-    func decorate(cell: ProfileInfoCell, with item: ProfileInfoViewModel) {
-        cell.firstNameLabel.text = item.firstName()
-        cell.lastNameLabel.text = item.lastName()
+struct ProfileInfoCellDecorator: ViewDecorator {
+    func decorate(view: ProfileInfoCell, with item: ProfileInfoViewModel) {
+        view.firstNameLabel.text = item.firstName()
+        view.lastNameLabel.text = item.lastName()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  Item.swift
 //  DataSourceExample
 //
 //  Created by Andrew Kochulab on 24.03.2021.
@@ -9,13 +9,13 @@ import Foundation
 
 typealias EmptyClosure = () -> Void
 
-protocol ViewModel {
+protocol DataSourceItem {
     static var name: String { get }
     
     var selectionEnabled: Bool { get }
 }
 
-extension ViewModel {
+extension DataSourceItem {
     static var name: String {
         String(describing: self)
     }
@@ -23,7 +23,7 @@ extension ViewModel {
     var selectionEnabled: Bool { false }
 }
 
-protocol SelectableViewModel: ViewModel {
+protocol SelectableViewModel: DataSourceItem {
     var onSelect: EmptyClosure { get set }
 }
 

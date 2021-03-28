@@ -12,11 +12,11 @@ final class TestController: UIViewController {
     private lazy var tableView = UITableView()
     private lazy var contentProvider = TableContentProvider(
         dataSource: viewModel.dataSource,
-        decorators: CellDecorators(
+        decorators: ViewDecorators(
             ProfileInfoCellDecorator(),
             ProfileAboutCellDecorator(),
             ProfileActionCellDecorator()
-        ),
+        ).bootstrap(),
         tableView: tableView
     )
     

@@ -8,7 +8,7 @@
 import Foundation
 
 struct TestControllerViewModel {
-    let dataSource = DataSource()
+    let dataSource = AnyDataSource()
     
     init() {
         configure()
@@ -59,7 +59,7 @@ struct TestControllerViewModel {
         
         dataSource.add(
             section: FriendsSection(
-                items: friends.compactMap(ProfileInfoViewModel.init(user:))
+                list: friends.compactMap(ProfileInfoViewModel.init(user:))
             )
         )
     }
