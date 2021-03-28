@@ -42,7 +42,7 @@ final class ProfileAboutViewModel: DataSourceItem {
     }
 }
 
-struct ProfileActionViewModel: SelectableViewModel {
+struct ProfileActionViewModel: SelectableDataSourceItem {
     let name: String
     var onSelect: EmptyClosure
 }

@@ -23,10 +23,10 @@ extension DataSourceItem {
     var selectionEnabled: Bool { false }
 }
 
-protocol SelectableViewModel: DataSourceItem {
+protocol SelectableDataSourceItem: DataSourceItem {
     var onSelect: EmptyClosure { get set }
 }
 
-extension SelectableViewModel {
+extension SelectableDataSourceItem {
     var selectionEnabled: Bool { true }
 }
