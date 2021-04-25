@@ -54,3 +54,7 @@ struct ProfileSection: AnyDataSourceSection {
 struct FriendsSection: DataSourceSection {
     var list: [ProfileInfoViewModel]
 }
+
+struct ProfileHeaderViewModel: DataSourceHeader {
+    let title: String
+}

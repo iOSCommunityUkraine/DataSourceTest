@@ -29,6 +29,9 @@
 		8E6EC1FC260FD54300842ED9 /* ReusableViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6EC1FB260FD54300842ED9 /* ReusableViewConfig.swift */; };
 		8E6EC20B260FE82800842ED9 /* ReusableViewConfig+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6EC20A260FE82800842ED9 /* ReusableViewConfig+TableView.swift */; };
 		8E6EC20E260FE82F00842ED9 /* ReusableViewConfig+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6EC20D260FE82F00842ED9 /* ReusableViewConfig+CollectionView.swift */; };
+		9B3CB3BD2636087600EE46BD /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CB3BC2636087600EE46BD /* Header.swift */; };
+		9B3CB3C226360B8A00EE46BD /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CB3C126360B8A00EE46BD /* ProfileHeaderView.swift */; };
+		9B3CB3C626360C8600EE46BD /* ProfileHeaderViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3CB3C526360C8600EE46BD /* ProfileHeaderViewDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		8E6EC1FB260FD54300842ED9 /* ReusableViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewConfig.swift; sourceTree = "<group>"; };
 		8E6EC20A260FE82800842ED9 /* ReusableViewConfig+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableViewConfig+TableView.swift"; sourceTree = "<group>"; };
 		8E6EC20D260FE82F00842ED9 /* ReusableViewConfig+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableViewConfig+CollectionView.swift"; sourceTree = "<group>"; };
+		9B3CB3BC2636087600EE46BD /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		9B3CB3C126360B8A00EE46BD /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		9B3CB3C526360C8600EE46BD /* ProfileHeaderViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 		8E26AE50260B833600A40158 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				9B3CB3BF26360A9000EE46BD /* Headers */,
 				8E26AE60260B84C400A40158 /* Cells */,
 				8E26AE51260B834B00A40158 /* TestContent.swift */,
 				8E26AE31260B824100A40158 /* TestController.swift */,
@@ -191,8 +198,26 @@
 				8E26AE4D260B832300A40158 /* DataSource.swift */,
 				8E26AE4A260B830600A40158 /* Section.swift */,
 				8E26AE47260B82DF00A40158 /* Item.swift */,
+				9B3CB3BC2636087600EE46BD /* Header.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		9B3CB3BF26360A9000EE46BD /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				9B3CB3C026360A9F00EE46BD /* ProfileInfoHeader */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		9B3CB3C026360A9F00EE46BD /* ProfileInfoHeader */ = {
+			isa = PBXGroup;
+			children = (
+				9B3CB3C126360B8A00EE46BD /* ProfileHeaderView.swift */,
+				9B3CB3C526360C8600EE46BD /* ProfileHeaderViewDecorator.swift */,
+			);
+			path = ProfileInfoHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,9 +299,12 @@
 				8E26AE75260B8CA600A40158 /* ProfileAboutCell.swift in Sources */,
 				8E6EC1FC260FD54300842ED9 /* ReusableViewConfig.swift in Sources */,
 				8E26AE81260B8E4900A40158 /* ProfileActionCellDecorator.swift in Sources */,
+				9B3CB3BD2636087600EE46BD /* Header.swift in Sources */,
 				8E26AE5E260B84A300A40158 /* ViewDecorator.swift in Sources */,
 				8E26AE62260B84D200A40158 /* ProfileInfoCell.swift in Sources */,
+				9B3CB3C226360B8A00EE46BD /* ProfileHeaderView.swift in Sources */,
 				8E6EC20E260FE82F00842ED9 /* ReusableViewConfig+CollectionView.swift in Sources */,
+				9B3CB3C626360C8600EE46BD /* ProfileHeaderViewDecorator.swift in Sources */,
 				8E26AE32260B824100A40158 /* TestController.swift in Sources */,
 				8E26AE4B260B830600A40158 /* Section.swift in Sources */,
 				8E6EC20B260FE82800842ED9 /* ReusableViewConfig+TableView.swift in Sources */,

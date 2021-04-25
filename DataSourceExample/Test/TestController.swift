@@ -16,7 +16,7 @@ final class TestController: UIViewController {
             ProfileInfoCellDecorator(),
             ProfileAboutCellDecorator(),
             ProfileActionCellDecorator()
-        ).bootstrap(),
+        ).inject(headers: ProfileHeaderViewDecorator()).bootstrap(),
         tableView: tableView
     )
     
